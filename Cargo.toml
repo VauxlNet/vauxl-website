@@ -1,7 +1,13 @@
 [package]
 name = "vauxl-website"
-version = "0.1.0"
+version = "0.0.0"
+authors = ["CozyBear"]
 edition = "2024"
+description = "The Website to the VoIP and Chat App Vauxl"
+license = "GPL-3"
+repository = "https://github.com/VauxlNet/vauxl-website"
+homepage = "https://vauxl.net"
+documentation = "https://docs.vauxl.net"
 
 [dependencies]
 dioxus = {version = "0.6.3", features = ["web", "fullstack"]}
