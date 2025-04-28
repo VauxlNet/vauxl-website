@@ -8,6 +8,16 @@ fn main() {
 
 fn app() -> Element {
     rsx! {
+        document::Stylesheet{
+            href: asset!("./public/output.css")
+        }
+
+        head {
+            title {
+                "VauxlNet"
+            }
+        }
+
         vauxl_header {},
 
         div {
