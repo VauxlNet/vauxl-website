@@ -1,0 +1,22 @@
+[application]
+name = "VauxlNet - Website"
+
+default_platform = "web"
+
+# `build` & `serve` dist path
+out_dir = "dist"
+
+# resource (public) file folder
+asset_dir = "public"
+
+[web.app]
+
+# HTML title tag content
+title = "VauxlNet"
+
+[web.watcher]
+# when watcher trigger, regenerate the `index.html`
+reload_html = true
+
+# which files or dirs will be watcher monitoring
+watch_path = ["src", "public"]
