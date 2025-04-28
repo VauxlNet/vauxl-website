@@ -1,11 +1,8 @@
 use dioxus::prelude::*;
 
 fn main() {
-    dioxus::LaunchBuilder::new() // Start the builder with the root component
-        .with_cfg(dioxus_web::Config::new()) // Provide the configuration object
-        // If your version requires explicitly providing server functions even if empty,
-        // you might need a method like .with_server_functions(vec![]) here.
-        // Let's try without it first, as the builder might handle it.
+    LaunchBuilder::new()
+        .with_cfg(dioxus_web::Config::new())
         .launch(app);
 }
 
