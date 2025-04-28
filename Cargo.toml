@@ -10,7 +10,7 @@ homepage = "https://vauxl.net"
 documentation = "https://docs.vauxl.net"
 
 [dependencies]
-dioxus = {version = "0.6.3", features = ["web", "fullstack"]}
+dioxus = {version = "0.6.3", features = ["web", "fullstack", "router"]}
 dioxus-web = { version = "0.6.3"}
 web-sys = "0.3.77"
 

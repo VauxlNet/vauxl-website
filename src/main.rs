@@ -1,4 +1,8 @@
+mod routes;
+
 use dioxus::prelude::*;
+
+const ICON: Asset = asset!("/assets/vauxl_icon.png");
 
 fn main() {
     LaunchBuilder::new()
@@ -12,43 +16,29 @@ fn app() -> Element {
             href: asset!("./public/output.css")
         }
 
-        vauxl_header {},
+        div{
+            class: "flex flex-col h-dvh",
 
-        div {
-            class: "container mx-auto p-6 bg-gray-100 rounded-lg shadow-xl mt-10 mb-10",
-            h1 {
-                class: "text-3xl font-bold text-blue-700 mb-4 text-center",
-                "Hello, Dioxus with Tailwind!"
+            vauxl_header {},
+
+            Router::<routes::Route> {},
+
+            div{
+                class:"flex-grow",
             }
-            p {
-                class: "text-gray-800 text-lg text-center",
-                "This is a basic example running with dioxus-cli and Tailwind CSS."
-            }
-            button {
-                class: "mt-6 px-6 py-3 bg-green-500 text-white font-semibold rounded-md shadow-md hover:bg-green-600 transition duration-300 block mx-auto",
-                onclick: move |_| {
-                    // Use web_sys::console::log_1 for browser console output in web builds (Wasm)
-                    #[cfg(target_arch = "wasm32")]
-                    web_sys::console::log_1(&"Button clicked!".into());
-                    // Use println! for server-side or desktop builds
-                    #[cfg(not(target_arch = "wasm32"))]
-                    println!("Button clicked!");
-                },
-                "Click Me!"
-            }
+
+            vauxl_footer {},
         },
-
-        vauxl_footer {},
     }
 }
 
 #[component]
 fn vauxl_header() -> Element {
     let links = vec![
-        ("Home", "/dashboard"),
         ("Team", "/team"),
         ("Projects", "/projects"),
-        ("Reports", "/reports"),
+        ("Reports", "/contact/reports"),
+        ("Dashboard", "/dashboard"),
     ];
 
     rsx! {
@@ -56,9 +46,23 @@ fn vauxl_header() -> Element {
             class: "bg-blue-600 text-white p-4 shadow-md",
             div {
                 class: "container mx-auto flex justify-between items-center",
-                div {
-                    class: "text-xl font-bold",
-                    "VauxlNet"
+                div{
+                    class: "container mx-auto flex justify-start",
+                    a {
+                        class: "text-xl font-bold font-[sofia-pro-soft]",
+                        href: "/",
+                        img {
+                        class: "mask-origin-content mask-x-from-70% mask-y-from-70%",
+                        src: ICON,
+                        height: "30px",
+                        width: "30px",
+                        },
+                    },
+                    a {
+                        class: "text-xl font-bold mr-8",
+                        href: "/",
+                        "VauxlNet",
+                    },
                 }
                 nav {
                     // Use 'class' for Tailwind classes in rsx!
@@ -77,9 +81,9 @@ fn vauxl_header() -> Element {
                             }
                         }.ok()) // <--- Add .ok() here to handle the Result
                     }
-                }
-            }
-        }
+                },
+            },
+        },
     }
 }
 
