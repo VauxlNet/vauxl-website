@@ -12,12 +12,6 @@ fn app() -> Element {
             href: asset!("./public/output.css")
         }
 
-        head {
-            title {
-                "VauxlNet"
-            }
-        }
-
         vauxl_header {},
 
         div {
