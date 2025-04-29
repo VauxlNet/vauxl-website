@@ -37,3 +37,4 @@ incremental = false
 
 [features]
 web = ["dioxus/web"]
+server = ["dioxus/server"]

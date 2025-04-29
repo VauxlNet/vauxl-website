@@ -17,7 +17,7 @@ fn app() -> Element {
         }
 
         div{
-            class: "flex flex-col h-dvh",
+            class: "flex flex-col h-dvh font-main",
 
             vauxl_header {},
 
@@ -43,7 +43,7 @@ fn vauxl_header() -> Element {
 
     rsx! {
         header {
-            class: "bg-blue-600 text-white p-4 shadow-md",
+            class: "bg-blue-600 text-white p-4 shadow-md font-main",
             div {
                 class: "container mx-auto flex justify-between items-center",
                 div{
@@ -97,7 +97,7 @@ fn vauxl_footer() -> Element {
                 class: "container mx-auto",
                 p {
                     class: "text-sm",
-                    "© 2023 VauxlNet. All rights reserved."
+                    "© 2025 VauxlNet. All rights reserved."
                 }
                 // You can add more info or links here
                 div {
