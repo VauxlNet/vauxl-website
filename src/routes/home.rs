@@ -6,16 +6,23 @@ pub fn Home() -> Element {
         div{
             class: "flex flex-col gap-2",
             div {
-                class: "container mx-auto p-6 bg-gray-100 rounded-lg shadow-xl mt-10 mb-10 grid grid-cols-3 grid-rows-5",
+                class: "container mx-auto p-6 bg-gray-200 rounded-lg shadow-xl mt-10 mb-10 grid grid-cols-3 grid-rows-6",
                 h1 {
-                    class: "text-5xl font-bold text-blue-020 mb-4 text-left row-span-2",
-                    "Privatize your Conversation"
+                    class: "text-5xl font-bold text-blue-020 text-left row-1",
+                    "Your Server."
                 }
-                p {
-                    class: "text-blue-010 text-lg text-left font-light row-start-3 row-span-3",
-                    "with Vauxl"
+                h1 {
+                    class: "text-5xl font-bold text-blue-020 text-left row-2",
+                    "Your Rules."
                 }
-                br {}
+                h1 {
+                    class: "text-5xl font-bold text-blue-020 text-left row-3",
+                    "Your Data."
+                }
+                h1 {
+                    class: "text-blue-010 text-lg text-left font-light row-4",
+                    "with Vauxl."
+                }
             },
             div {
                 class: "container mx-auto grid grid-cols-6",

@@ -2,7 +2,7 @@ mod routes;
 
 use dioxus::prelude::*;
 
-const ICON: Asset = asset!("/assets/vauxl_icon.png");
+const ICON: Asset = asset!("/assets/vauxl_icon03.png");
 
 fn main() {
     LaunchBuilder::new()
@@ -43,16 +43,16 @@ fn vauxl_header() -> Element {
 
     rsx! {
         header {
-            class: "bg-blue-600 text-white p-4 shadow-md font-main",
+            class: "bg-blue-040 text-white p-4 shadow-md font-main",
             div {
                 class: "container mx-auto flex justify-between items-center",
                 div{
                     class: "container mx-auto flex justify-start",
                     a {
-                        class: "text-xl font-bold font-[sofia-pro-soft]",
+                        class: "mr-2",
                         href: "/",
                         img {
-                        class: "mask-origin-content mask-x-from-70% mask-y-from-70%",
+                        class: "mask-origin-content",
                         src: ICON,
                         height: "30px",
                         width: "30px",
@@ -65,21 +65,16 @@ fn vauxl_header() -> Element {
                     },
                 }
                 nav {
-                    // Use 'class' for Tailwind classes in rsx!
-                    class: "flex space-x-4", // Simplified class for demonstration
-                    // Embed the iterator directly and use .ok() to convert Result<VNode, RenderError> to Option<VNode> (Element)
+                    class: "flex space-x-4",
                     {
                         links.iter().map(|(title, url)| rsx! {
                             a {
-                                // Add a 'key' prop for efficient list rendering (important!).
                                 key: "{url}",
                                 href: "{url}",
-                                // Use 'class' again for link styles.
-                                class: "rounded-lg px-3 py-2 text-white font-medium hover:bg-blue-700 hover:text-gray-100 transition duration-300", // Adjusted colors for header
-                                // Embed the title text using curly braces.
+                                class: "rounded-lg px-3 py-2 text-white font-medium hover:bg-blue-030 hover:text-gray-100 transition duration-300",
                                 "{title}"
                             }
-                        }.ok()) // <--- Add .ok() here to handle the Result
+                        }.ok())
                     }
                 },
             },
@@ -89,17 +84,15 @@ fn vauxl_header() -> Element {
 
 #[component]
 fn vauxl_footer() -> Element {
-    // Return the rsx! block directly instead of using cx.render!
     rsx! {
         footer {
-            class: "bg-gray-800 text-gray-300 p-6 text-center shadow-inner",
+            class: "bg-blue-040 text-gray-300 p-6 text-center shadow-inner",
             div {
                 class: "container mx-auto",
                 p {
                     class: "text-sm",
                     "© 2025 VauxlNet. All rights reserved."
                 }
-                // You can add more info or links here
                 div {
                     class: "mt-2 text-sm",
                     a {
@@ -111,6 +104,11 @@ fn vauxl_footer() -> Element {
                         href: "/terms",
                         class: "hover:underline mx-2",
                         "Terms of Service"
+                    }
+                    a {
+                        href: "/contact",
+                        class: "hover:underline mx-2",
+                        "Contact"
                     }
                 }
             }
