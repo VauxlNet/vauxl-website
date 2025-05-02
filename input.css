@@ -105,11 +105,11 @@
     --font-main: "sofia-pro-soft", sans-serif;
     --font-mono: "forma-djr-mono", monospace;
 
-    --color-blue-010: #2F93CF;
-    --color-blue-020: #255BD9;
-    --color-blue-030: #3538E5;
-    --color-blue-040: #1B2764;
-    --color-bg-dark: #080828;
-    --color-green-accent: #7BD26D;
-    --color-orange-accent: #E59C3B;
+    --color-blue-010: #2F93CF; /* Accent for 020*/
+    --color-blue-020: #255BD9; /*Color for White Background*/
+    --color-blue-030: #3538E5; /*Accent on Main Color*/
+    --color-blue-040: #1B2764; /*Main Color*/
+    --color-bg-dark: #080828; /*background*/
+    --color-green-accent: #7BD26D; /*for green buttons*/
+    --color-orange-accent: #E59C3B; /*for orange buttons*/
 }
