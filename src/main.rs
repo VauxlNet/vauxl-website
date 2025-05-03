@@ -36,7 +36,7 @@ fn app() -> Element {
 fn vauxl_header() -> Element {
     let links = vec![
         ("Team", "/team"),
-        ("Projects", "/projects"),
+        ("Workshop", "/projects"),
         ("Reports", "/contact/reports"),
         ("Dashboard", "/dashboard"),
     ];
@@ -44,10 +44,10 @@ fn vauxl_header() -> Element {
     rsx! {
         header {
             class: "bg-blue-040 text-white p-4 shadow-md font-main",
-            div {
-                class: "container mx-auto flex justify-between items-center",
+            nav {
+                class: "mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8",
                 div{
-                    class: "container mx-auto flex justify-start",
+                    class: "flex lg:flex-1",
                     a {
                         class: "mr-2",
                         href: "/",
@@ -59,24 +59,53 @@ fn vauxl_header() -> Element {
                         },
                     },
                     a {
-                        class: "text-xl font-bold mr-8",
+                        class: "text-xl font-bold",
                         href: "/",
                         "VauxlNet",
                     },
-                }
-                nav {
-                    class: "flex space-x-4",
-                    {
-                        links.iter().map(|(title, url)| rsx! {
-                            a {
-                                key: "{url}",
-                                href: "{url}",
-                                class: "rounded-lg px-3 py-2 text-white font-medium hover:bg-blue-030 hover:text-gray-100 transition duration-300",
-                                "{title}"
-                            }
-                        }.ok())
-                    }
                 },
+                div {
+                    class: "flex lg:hidden",
+                    a {
+                        class: "mx-4",
+                        href: "/team",
+                        "Team",
+                    }
+                    a {
+                        class: "mx-4",
+                        href: "/projects",
+                        "Projects",
+                    }
+                    a {
+                        class: "mx-4",
+                        href: "/dashboard",
+                        "Dashboard",
+                    }
+                    a {
+                        class: "mx-4",
+                        href: "/contact/report",
+                        "Report",
+                    }
+
+                    //{
+                    //    links.iter().map(|(title, url)| rsx! {
+                    //        a {
+                    //            key: "{url}",
+                    //            href: "{url}",
+                    //            class: "rounded-lg px-3 py-2 text-white font-medium hover:bg-blue-030 hover:text-gray-100 transition duration-300",
+                    //            "{title}"
+                    //        }
+                    //    }.ok())
+                    //}
+                },
+                div {
+                    class: "flex lg:hidden",
+                    a {
+                        class: "text-l font-bold ml-8",
+                        href: "/login",
+                        "Login"
+                    }
+                }
             },
         },
     }
