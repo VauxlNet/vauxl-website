@@ -113,3 +113,7 @@
     --color-green-accent: #7BD26D; /*for green buttons*/
     --color-orange-accent: #E59C3B; /*for orange buttons*/
 }
+
+@custom-variant data-slot (&[data-slot="icon"]);
+@custom-variant aria-expanded-f (&[aria-expanded="false"]);
+@custom-variant aria-controls-dis-1 (&[aria-controls="disclosure-1"])
