@@ -17,7 +17,7 @@ fn app() -> Element {
         }
 
         div{
-            class: "flex flex-col h-dvh font-main bg-main-300",
+            class: "flex flex-col h-dvh font-main bg-gray-600",
 
             header::Header {},
 

@@ -30,10 +30,13 @@
   :root, :host {
     --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: "forma-djr-mono", monospace;
+    --color-gray-100: oklch(96.7% .003 264.542);
     --color-gray-300: oklch(87.2% .01 258.338);
     --color-gray-400: oklch(70.7% .022 261.325);
     --color-gray-500: oklch(55.1% .027 264.364);
+    --color-gray-600: oklch(44.6% .03 256.802);
     --color-gray-900: oklch(21% .034 264.665);
+    --color-white: #fff;
     --spacing: .25rem;
     --container-sm: 24rem;
     --container-md: 28rem;
@@ -680,6 +683,10 @@
     border-width: 1px;
   }
 
+  .bg-gray-600 {
+    background-color: var(--color-gray-600);
+  }
+
   .bg-main-100 {
     background-color: var(--color-main-100);
   }
@@ -688,16 +695,12 @@
     background-color: var(--color-main-200);
   }
 
-  .bg-main-300 {
-    background-color: var(--color-main-300);
-  }
-
   .bg-main-400 {
     background-color: var(--color-main-400);
   }
 
-  .bg-main-500 {
-    background-color: var(--color-main-500);
+  .bg-white {
+    background-color: var(--color-white);
   }
 
   .mask-origin-content {
