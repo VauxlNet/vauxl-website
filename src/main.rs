@@ -17,7 +17,7 @@ fn app() -> Element {
         }
 
         div{
-            class: "flex flex-col h-dvh font-main",
+            class: "flex flex-col h-dvh font-main bg-main-300",
 
             header::Header {},
 
@@ -36,7 +36,7 @@ fn app() -> Element {
 fn vauxl_footer() -> Element {
     rsx! {
         footer {
-            class: "bg-blue-040 text-gray-300 p-6 text-center shadow-inner",
+            class: "bg-main-100 text-main-200 p-6 text-center shadow-inner",
             div {
                 class: "container mx-auto",
                 p {

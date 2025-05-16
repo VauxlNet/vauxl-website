@@ -30,15 +30,10 @@
   :root, :host {
     --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: "forma-djr-mono", monospace;
-    --color-blue-200: oklch(88.2% .059 254.128);
-    --color-blue-400: oklch(70.7% .165 254.624);
-    --color-gray-100: oklch(96.7% .003 264.542);
-    --color-gray-200: oklch(92.8% .006 264.531);
     --color-gray-300: oklch(87.2% .01 258.338);
     --color-gray-400: oklch(70.7% .022 261.325);
     --color-gray-500: oklch(55.1% .027 264.364);
     --color-gray-900: oklch(21% .034 264.665);
-    --color-white: #fff;
     --spacing: .25rem;
     --container-sm: 24rem;
     --container-md: 28rem;
@@ -57,16 +52,16 @@
     --font-weight-bold: 700;
     --radius-md: .375rem;
     --radius-lg: .5rem;
-    --radius-3xl: 1.5rem;
     --default-transition-duration: .15s;
     --default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --font-main: "sofia-pro-soft", sans-serif;
-    --color-blue-010: #2f93cf;
-    --color-blue-020: #255bd9;
-    --color-blue-030: #3538e5;
-    --color-blue-040: #1b2764;
+    --color-main-100: #2f3d50;
+    --color-main-200: #8894a1;
+    --color-main-300: #feeecd;
+    --color-main-400: #d7b692;
+    --color-main-500: #c4762a;
   }
 }
 
@@ -672,10 +667,6 @@
     overflow-y: auto;
   }
 
-  .rounded-3xl {
-    border-radius: var(--radius-3xl);
-  }
-
   .rounded-lg {
     border-radius: var(--radius-lg);
   }
@@ -689,16 +680,24 @@
     border-width: 1px;
   }
 
-  .bg-blue-040 {
-    background-color: var(--color-blue-040);
+  .bg-main-100 {
+    background-color: var(--color-main-100);
   }
 
-  .bg-blue-200 {
-    background-color: var(--color-blue-200);
+  .bg-main-200 {
+    background-color: var(--color-main-200);
   }
 
-  .bg-gray-200 {
-    background-color: var(--color-gray-200);
+  .bg-main-300 {
+    background-color: var(--color-main-300);
+  }
+
+  .bg-main-400 {
+    background-color: var(--color-main-400);
+  }
+
+  .bg-main-500 {
+    background-color: var(--color-main-500);
   }
 
   .mask-origin-content {
@@ -823,18 +822,6 @@
     font-weight: var(--font-weight-semibold);
   }
 
-  .text-blue-010 {
-    color: var(--color-blue-010);
-  }
-
-  .text-blue-020 {
-    color: var(--color-blue-020);
-  }
-
-  .text-blue-040 {
-    color: var(--color-blue-040);
-  }
-
   .text-gray-300 {
     color: var(--color-gray-300);
   }
@@ -843,8 +830,24 @@
     color: var(--color-gray-400);
   }
 
-  .text-white {
-    color: var(--color-white);
+  .text-main-100 {
+    color: var(--color-main-100);
+  }
+
+  .text-main-200 {
+    color: var(--color-main-200);
+  }
+
+  .text-main-300 {
+    color: var(--color-main-300);
+  }
+
+  .text-main-400 {
+    color: var(--color-main-400);
+  }
+
+  .text-main-500 {
+    color: var(--color-main-500);
   }
 
   .underline {
@@ -907,20 +910,20 @@
   }
 
   @media (hover: hover) {
-    .hover\:bg-blue-030:hover {
-      background-color: var(--color-blue-030);
+    .hover\:bg-main-200:hover {
+      background-color: var(--color-main-200);
     }
 
-    .hover\:bg-blue-400:hover {
-      background-color: var(--color-blue-400);
+    .hover\:bg-main-500:hover {
+      background-color: var(--color-main-500);
     }
 
-    .hover\:text-gray-100:hover {
-      color: var(--color-gray-100);
+    .hover\:text-main-100:hover {
+      color: var(--color-main-100);
     }
 
-    .hover\:text-white:hover {
-      color: var(--color-white);
+    .hover\:text-main-300:hover {
+      color: var(--color-main-300);
     }
 
     .hover\:underline:hover {

@@ -105,13 +105,11 @@
     --font-main: "sofia-pro-soft", sans-serif;
     --font-mono: "forma-djr-mono", monospace;
 
-    --color-blue-010: #2F93CF; /* Accent for 020*/
-    --color-blue-020: #255BD9; /*Color for White Background*/
-    --color-blue-030: #3538E5; /*Accent on Main Color*/
-    --color-blue-040: #1B2764; /*Main Color*/
-    --color-bg-dark: #080828; /*background*/
-    --color-green-accent: #7BD26D; /*for green buttons*/
-    --color-orange-accent: #E59C3B; /*for orange buttons*/
+    --color-main-100: #2F3D50; /**/
+    --color-main-200: #8894a1; /**/
+    --color-main-300: #feeecd; /*Only for Font Color*/
+    --color-main-400: #d7b692; /**/
+    --color-main-500: #c4762a; /**/
 }
 
 @custom-variant data-slot (&[data-slot="icon"]);
