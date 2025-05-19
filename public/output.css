@@ -562,8 +562,24 @@
     max-width: var(--container-7xl);
   }
 
+  .max-w-full {
+    max-width: 100%;
+  }
+
+  .max-w-max {
+    max-width: max-content;
+  }
+
   .max-w-md {
     max-width: var(--container-md);
+  }
+
+  .max-w-min {
+    max-width: min-content;
+  }
+
+  .max-w-sm {
+    max-width: var(--container-sm);
   }
 
   .flex-auto {
@@ -917,6 +933,10 @@
       background-color: var(--color-main-200);
     }
 
+    .hover\:bg-main-400:hover {
+      background-color: var(--color-main-400);
+    }
+
     .hover\:bg-main-500:hover {
       background-color: var(--color-main-500);
     }
@@ -925,8 +945,16 @@
       color: var(--color-main-100);
     }
 
+    .hover\:text-main-200:hover {
+      color: var(--color-main-200);
+    }
+
     .hover\:text-main-300:hover {
       color: var(--color-main-300);
+    }
+
+    .hover\:text-main-500:hover {
+      color: var(--color-main-500);
     }
 
     .hover\:underline:hover {

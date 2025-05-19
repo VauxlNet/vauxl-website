@@ -108,15 +108,15 @@ pub fn Header() -> Element {
                         },
                         if is_contact_menu_open() {
                             div {
-                                class: "absolute top-full -left-8 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-lg bg-main-400 shadow-lg ring-1 ring-gray-900/5",
+                                class: "absolute top-full -left-8 z-10 mt-3 w-screen max-w-max overflow-hidden rounded-lg bg-main-200 shadow-lg ring-1 ring-gray-900/5",
                                 div {
                                     class: "p-4",
                                     div {
-                                        class: "group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-main-200",
+                                        class: "group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-main-400",
                                         div {
                                             class: "flex-auto",
                                             a {
-                                                class: "block rounded-lg text-main-500 font-medium hover:text-main-100 aria-expanded-true",
+                                                class: "block rounded-lg text-main-100 font-medium hover:text-main-500 aria-expanded-true",
                                                 href: "/contact/report",
                                                 "Report"
                                                 span {
@@ -130,11 +130,11 @@ pub fn Header() -> Element {
                                         },
                                     },
                                     div {
-                                        class: "group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-main-200",
+                                        class: "group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-main-400",
                                         div {
                                             class: "flex-auto",
                                             a {
-                                                class: "block rounded-lg text-main-500 font-bold hover:text-main-100 aria-expanded-true",
+                                                class: "block rounded-lg text-main-100 font-bold hover:text-main-500 aria-expanded-true",
                                                 href: "/contact/info",
                                                 "Info"
                                                 span {
