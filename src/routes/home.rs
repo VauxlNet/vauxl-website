@@ -6,7 +6,7 @@ pub fn Home() -> Element {
         div{
             class: "flex flex-col gap-2",
             div {
-                class: "container mx-auto p-6 bg-main-200 rounded-lg shadow-xl mt-10 mb-10 grid grid-cols-3 grid-rows-6",
+                class: "container mx-auto p-6 bg-main-200 rounded-lg shadow-xl mt-10 mb-2 grid grid-cols-3 grid-rows-6",
                 h1 {
                     class: "text-5xl font-bold text-main-300 text-left row-1",
                     "Your Server."
@@ -25,7 +25,7 @@ pub fn Home() -> Element {
                 }
             },
             div {
-                class: "container mx-auto grid grid-cols-6 text-main-500",
+                class: "container mx-auto grid grid-cols-6 text-main-500 -mt-2",
                 a {
                     class: "m-4 px-4 py-4 bg-main-400 font-semibold rounded-md shadow-md hover:bg-main-500 hover:text-main-300 transition duration-300 block grid col-start-2 col-end-4 justify-self-end",
                     href: "https://app.vauxl.net",
