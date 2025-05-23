@@ -240,10 +240,10 @@ pub fn Header() -> Element {
                                         "Dashboard"
                                     },
                                     div {
-                                        class: "block rounded-lg px-3 py-2 font-medium hover:bg-main-200",
+                                        class: "block rounded-lg py-2 font-medium",
                                         button {
                                             r#type: "button",
-                                            class: "flex w-full items-center justify-between aria-controls-dis-1 aria-expanded-f rounded-lg py-2 pr-3.5 pl-3 font-bold hover:bg-main-200",
+                                            class: "flex w-full items-center justify-between aria-controls-dis-1 aria-expanded-f rounded-lg py-2 px-3 font-bold hover:bg-main-200",
                                             onclick: move |_| is_contact_menu_open.set(!is_contact_menu_open()),
                                             "Contact"
                                             svg {
@@ -259,22 +259,22 @@ pub fn Header() -> Element {
                                         },
                                         if is_contact_menu_open() {
                                             div {
-                                                class: "mt-2 space-y-2",
+                                                class: "mt-2 space-y-2 pl-3",
                                                 id: "disclosure-1",
                                                 a {
-                                                    class: "block rounded-lg py-2 pr-3 pl-6 font-bold hover:bg-main-200",
+                                                    class: "block rounded-lg py-2 pr-3 pl-2 font-bold hover:bg-main-200",
                                                     href: "/contact",
                                                     "Contact"
                                                 },
                                                 div {
                                                     class: "ml-2",
                                                     a {
-                                                    class: "block rounded-lg py-2 pr-3 pl-6 font-medium hover:bg-main-200",
+                                                    class: "block rounded-lg py-2 pr-3 pl-2 font-medium hover:bg-main-200",
                                                     href: "/contact/report",
                                                     "Report"
                                                     },
                                                     a {
-                                                    class: "block rounded-lg py-2 pr-3 pl-6 font-medium hover:bg-main-200",
+                                                    class: "block rounded-lg py-2 pr-3 pl-2 font-medium hover:bg-main-200",
                                                     href: "/contact/info",
                                                     "Information"
                                                     },
