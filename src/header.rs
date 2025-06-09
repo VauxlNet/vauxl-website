@@ -3,7 +3,7 @@ use dioxus::prelude::*;
 use gloo_timers::future::sleep;
 use std::time::Duration;
 
-const ICON: Asset = asset!("/assets/vauxl_icon03.png");
+//const ICON: Asset = asset!("/assets/vauxl_icon03.png"); Probably not in use anymore
 
 #[component]
 pub fn Header() -> Element {
@@ -27,10 +27,7 @@ pub fn Header() -> Element {
                             class: "sr-only",
                             "VauxlNet",
                         },
-                        img {
-                        class: "mask-origin-content h-8 w-auto",
-                        src: ICON,
-                        },
+                        ICON{},
                     },
                     a {
                         class: "text-xl font-bold my-3",
@@ -65,17 +62,17 @@ pub fn Header() -> Element {
                 div {
                     class: "hidden lg:flex lg:gap-x-12",
                     a {
-                        class: "rounded-lg px-3 py-2 mx-6 font-medium hover:bg-main-200 transition duration-300",
+                        class: "rounded-lg px-3 py-2 mx-6 font-medium hover:bg-main-500 transition duration-300",
                         href: "/team",
                         "Team",
                     },
                     a {
-                        class: "rounded-lg px-3 py-2 mx-6 font-medium hover:bg-main-200 transition duration-300",
+                        class: "rounded-lg px-3 py-2 mx-6 font-medium hover:bg-main-500 transition duration-300",
                         href: "/projects",
                         "Projects",
                     },
                     a {
-                        class: "rounded-lg px-3 py-2 mx-6 font-medium hover:bg-main-200 transition duration-300",
+                        class: "rounded-lg px-3 py-2 mx-6 font-medium hover:bg-main-500 transition duration-300",
                         href: "/dashboard",
                         "Dashboard",
                     },
@@ -95,11 +92,11 @@ pub fn Header() -> Element {
                             close_task_handle.set(Some(handle));
                         },
                         a {
-                            class: "flex items-center gap-x-1 rounded-lg px-3 py-2 mx-6 font-medium hover:bg-main-200 transition duration-300 aria-expanded-f",
+                            class: "flex items-center gap-x-1 rounded-lg px-3 py-2 mx-6 font-medium hover:bg-main-500 transition duration-300 aria-expanded-f",
                             href: "/contact",
                             "Contact",
                             svg {
-                                class: "size-5 flex-none text-gray-400 aria-hidden data-slot",
+                                class: "size-5 flex-none text-main-300 aria-hidden data-slot",
                                 view_box: "0 0 20 20",
                                 fill: "currentColor",
                                 path {
@@ -111,11 +108,11 @@ pub fn Header() -> Element {
                         },
                         if is_contact_menu_open() {
                             div {
-                                class: "absolute top-full -left-8 z-10 mt-3 w-screen max-w-max overflow-hidden rounded-lg bg-main-200 shadow-lg ring-1 ring-gray-900/5",
+                                class: "absolute top-full -left-8 z-10 mt-3 w-screen max-w-max overflow-hidden rounded-lg bg-main-500 shadow-lg ring-1 ring-gray-900/5",
                                 div {
                                     class: "p-4",
                                     div {
-                                        class: "group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-main-400",
+                                        class: "group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-main-200",
                                         div {
                                             class: "flex-auto",
                                             a {
@@ -133,7 +130,7 @@ pub fn Header() -> Element {
                                         },
                                     },
                                     div {
-                                        class: "group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-main-400",
+                                        class: "group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-main-200",
                                         div {
                                             class: "flex-auto",
                                             a {
@@ -188,8 +185,7 @@ pub fn Header() -> Element {
                                     class: "sr-only",
                                     "VauxlNet",
                                 },
-                                img {class: "mask-origin-content h-8 w-auto",src: ICON,
-                                },
+                                ICON{}
                             },
                             a {
                                 class: "text-xl font-bold my-3",
@@ -292,6 +288,73 @@ pub fn Header() -> Element {
                                     },
                                 }
                             },
+                        },
+                    },
+                },
+            },
+        },
+    }
+}
+
+#[component]
+pub fn ICON() -> Element {
+    rsx!{
+        svg {
+            class: "size-6 aria-hidden data-slot",
+            fill: "none",
+            view_box: "0 0 110 130.29",
+            stroke: "currentColor",
+            g {
+                id: "Layer_1-2",
+                "data-name": "Layer 1",
+                g {
+                    path {
+                        class: "cls-1",
+                        d: "M105,25v60c0,11.05-8.95,20-20,20h-41.06l-34.43,19.88c-2,1.16-4.5-.29-4.5-2.6v-36.94c-.01-.11-.01-.23-.01-.34V25C5,13.95,13.95,5,25,5h60c11.05,0,20,8.95,20,20Z",
+                        stroke_width: "10", 
+                        stroke: "currentColor",
+                        "stroke-miterlimit": "10",
+                    },
+                    g {
+                        line {
+                            class: "cls-2", // Consider if you want to replace this with direct Tailwind classes
+                            x1: "60.35",
+                            y1: "29.85",
+                            x2: "60.35",
+                            y2: "76.43",
+                            stroke_linecap: "round", // Taken from .cls-2
+                            stroke_width: "13", // Taken from .cls-2
+                            stroke: "currentColor", // Taken from .cls-2
+                        },
+                        line {
+                            class: "cls-2",
+                            x1: "80.5",
+                            y1: "45.58",
+                            x2: "80.5",
+                            y2: "63.13",
+                            stroke_linecap: "round",
+                            stroke_width: "13",
+                            stroke: "currentColor",
+                        },
+                        line {
+                            class: "cls-2",
+                            x1: "40.2",
+                            y1: "45.58",
+                            x2: "40.2",
+                            y2: "63.13",
+                            stroke_linecap: "round",
+                            stroke_width: "13",
+                            stroke: "currentColor",
+                        },
+                        line {
+                            class: "cls-2",
+                            x1: "40.2",
+                            y1: "45.58",
+                            x2: "27.5",
+                            y2: "58.29",
+                            stroke_linecap: "round",
+                            stroke_width: "13",
+                            stroke: "currentColor",
                         },
                     },
                 },

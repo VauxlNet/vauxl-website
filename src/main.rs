@@ -36,7 +36,7 @@ fn app() -> Element {
 fn vauxl_footer() -> Element {
     rsx! {
         footer {
-            class: "bg-main-100 text-main-200 p-6 text-center shadow-inner",
+            class: "bg-main-100 text-main-500 p-6 text-center shadow-inner",
             div {
                 class: "container mx-auto",
                 p {
