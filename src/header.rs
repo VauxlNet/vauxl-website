@@ -8,9 +8,12 @@ use std::time::Duration;
 #[component]
 pub fn Header() -> Element {
     let mut is_contact_menu_open = use_signal(|| false);
+    let mut is_about_menu_open = use_signal(|| false);
     let mut is_mobile_menu_open = use_signal(|| false);
     
     let mut close_task_handle: Signal<Option<Task>> = use_signal(|| None);
+
+    let target = "_blank";
 
     rsx! {
         header {
@@ -60,21 +63,118 @@ pub fn Header() -> Element {
                     },
                 },
                 div {
-                    class: "hidden lg:flex lg:gap-x-12",
+                    class: "hidden lg:flex lg:gap-x-12 text-lg font-medium",
                     a {
-                        class: "rounded-lg px-3 py-2 mx-6 font-medium hover:bg-main-500 transition duration-300",
-                        href: "/team",
-                        "Team",
+                        class: "flex justify-items-start rounded-lg px-3 py-2 mx-6 hover:bg-main-500 transition duration-300 gap-1",
+                        href: "https://docs.vauxl.net/",
+                        target,
+                        "Documentation",
+                        link_arrow{},
+                    },
+                    div{
+                        class: "relative",
+                        onmouseover: move |_| {
+                            if let Some(handle) = close_task_handle.write().take() {
+                                handle.cancel();
+                            }
+                            is_about_menu_open.set(true);
+                        },
+                        onmouseout: move |_| {
+                            let handle = spawn(async move {
+                                sleep(Duration::from_millis(200)).await;
+                                is_about_menu_open.set(false);
+                            });
+                            close_task_handle.set(Some(handle));
+                        },
+                        a {
+                            class: "flex items-center gap-x-1 rounded-lg px-3 py-2 mx-6 hover:bg-main-500 transition duration-300 aria-expanded-f",
+                            href: "/about",
+                            "About",
+                            svg {
+                                class: "size-5 flex-none text-main-300 aria-hidden data-slot",
+                                view_box: "0 0 20 20",
+                                fill: "currentColor",
+                                path {
+                                    fill_rule: "evenodd",
+                                    d:"M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z",
+                                    clip_rule: "evenodd",
+                                },
+                            },
+                        },
+                        if is_about_menu_open() {
+                            div {
+                                class: "absolute top-full -left-8 z-10 mt-3 w-screen max-w-max overflow-hidden rounded-lg bg-main-500 shadow-lg ring-1 ring-gray-900/5 text-base",
+                                div {
+                                    class: "p-4",
+                                    div {
+                                        class: "group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-main-200",
+                                        div {
+                                            class: "flex-auto",
+                                            a {
+                                                class: "block rounded-lg text-main-100 font-semibold hover:text-main-500 aria-expanded-true",
+                                                href: "/about/team",
+                                                "Team"
+                                                span {
+                                                    class: "absolute inset-0",
+                                                }
+                                            },
+                                            p {
+                                                class: "block font-medium text-main-300",
+                                                "Everything you need maybe not to know about us."
+                                            },
+                                        },
+                                    },
+                                    div {
+                                        class: "group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-main-200",
+                                        div {
+                                            class: "flex-auto",
+                                            a {
+                                                class: "flex justify-items-start block rounded-lg text-main-100 font-semibold hover:text-main-500 aria-expanded-true gap-1",
+                                                href: "https://git.vauxl.net/",
+                                                target,
+                                                "Community/Git",
+                                                span {
+                                                    class: "absolute inset-0",
+                                                },
+                                                link_arrow{},
+                                            },
+                                            p {
+                                                class: "block font-medium text-main-300",
+                                                "Git for Discussions"
+                                            },
+                                        },
+                                    },
+                                    div {
+                                        class: "group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-main-200",
+                                        div {
+                                            class: "flex-auto",
+                                            a {
+                                                class: "block rounded-lg text-main-100 font-semibold hover:text-main-500 aria-expanded-true",
+                                                href: "/about/roadmap",
+                                                "Roadmap"
+                                                span {
+                                                    class: "absolute inset-0",
+                                                }
+                                            },
+                                            p {
+                                                class: "block font-medium text-main-300",
+                                                "Our too ambitious Roadmap"
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        }
+                    }
+                    a {
+                        class: "rounded-lg px-3 py-2 mx-6 hover:bg-main-500 transition duration-300",
+                        href: "/news",
+                        "News",
                     },
                     a {
-                        class: "rounded-lg px-3 py-2 mx-6 font-medium hover:bg-main-500 transition duration-300",
-                        href: "/projects",
-                        "Projects",
-                    },
-                    a {
-                        class: "rounded-lg px-3 py-2 mx-6 font-medium hover:bg-main-500 transition duration-300",
-                        href: "/dashboard",
-                        "Dashboard",
+                        class: "rounded-lg px-3 py-2 mx-6 hover:bg-main-500 transition duration-300",
+                        href: "/pricing",
+                        "Pricing",
                     },
                     div {
                         class: "relative",
@@ -92,7 +192,7 @@ pub fn Header() -> Element {
                             close_task_handle.set(Some(handle));
                         },
                         a {
-                            class: "flex items-center gap-x-1 rounded-lg px-3 py-2 mx-6 font-medium hover:bg-main-500 transition duration-300 aria-expanded-f",
+                            class: "flex items-center gap-x-1 rounded-lg px-3 py-2 mx-6 hover:bg-main-500 transition duration-300 aria-expanded-f",
                             href: "/contact",
                             "Contact",
                             svg {
@@ -108,15 +208,15 @@ pub fn Header() -> Element {
                         },
                         if is_contact_menu_open() {
                             div {
-                                class: "absolute top-full -left-8 z-10 mt-3 w-screen max-w-max overflow-hidden rounded-lg bg-main-500 shadow-lg ring-1 ring-gray-900/5",
+                                class: "absolute top-full -left-8 z-10 mt-3 w-screen max-w-max overflow-hidden rounded-lg bg-main-500 shadow-lg ring-1 ring-gray-900/5 text-base",
                                 div {
                                     class: "p-4",
                                     div {
-                                        class: "group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-main-200",
+                                        class: "group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-main-200",
                                         div {
                                             class: "flex-auto",
                                             a {
-                                                class: "block rounded-lg text-main-100 font-medium hover:text-main-500 aria-expanded-true",
+                                                class: "block rounded-lg text-main-100 font-semibold hover:text-main-500 aria-expanded-true",
                                                 href: "/contact/report",
                                                 "Report"
                                                 span {
@@ -130,11 +230,11 @@ pub fn Header() -> Element {
                                         },
                                     },
                                     div {
-                                        class: "group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-main-200",
+                                        class: "group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-main-200",
                                         div {
                                             class: "flex-auto",
                                             a {
-                                                class: "block rounded-lg text-main-100 font-bold hover:text-main-500 aria-expanded-true",
+                                                class: "block rounded-lg text-main-100 font-semibold hover:text-main-500 aria-expanded-true",
                                                 href: "/contact/info",
                                                 "Info"
                                                 span {
@@ -155,9 +255,18 @@ pub fn Header() -> Element {
                 div {
                     class: "hidden lg:flex lg:flex-1 lg:justify-end",
                     a {
-                        class: "rounded-lg px-3 py-2 mx-2 font-bold hover:bg-main-200 transition duration-300",
-                        href: "/login",
-                        "LogIn",
+                        class: "flex justify-items-start rounded-lg px-3 py-2 mx-2 font-bold hover:bg-main-500 transition duration-300 gap-1",
+                        href: "https://b2b.vauxl.net/",
+                        target,
+                        "B2B",
+                        link_arrow{},
+                    },
+                    a {
+                        class: "flex justify-items-start rounded-lg px-3 py-2 mx-2 font-bold hover:bg-main-500 transition duration-300 gap-1",
+                        href: "https://app.vauxl.net",
+                        target,
+                        "Webapp",
+                        link_arrow{},
                         span {
                             class: "aria-hidden hidden",
                             "&rarr;",
@@ -192,25 +301,25 @@ pub fn Header() -> Element {
                                 href: "/",
                                 "VauxlNet",
                             },
-                        },
-                        button {
-                            r#type:"button",
-                            class: "-m-2.5 rounded-md p-2.5 text-gray-300",
-                            onclick: move |_| is_mobile_menu_open.set(false),
-                            span {
-                                class: "sr-only",
-                                "CloseMenu",
-                            }
-                            svg {
-                                class: "size-6 aria-hidden data-slot",
-                                fill: "none",
-                                view_box: "0 0 24 24",
-                                stroke_width: "1.5",
-                                stroke: "currentColor",
-                                path {
-                                    stroke_linecap: "round",
-                                    stroke_linejoin: "round",
-                                    d: "M6 18 18 6M6 6l12 12",
+                            button {
+                                r#type:"button",
+                                class: "-m-2.5 rounded-md p-2.5 text-gray-300",
+                                onclick: move |_| is_mobile_menu_open.set(false),
+                                span {
+                                    class: "sr-only",
+                                    "CloseMenu",
+                                }
+                                svg {
+                                    class: "size-6 aria-hidden data-slot",
+                                    fill: "none",
+                                    view_box: "0 0 24 24",
+                                    stroke_width: "1.5",
+                                    stroke: "currentColor",
+                                    path {
+                                        stroke_linecap: "round",
+                                        stroke_linejoin: "round",
+                                        d: "M6 18 18 6M6 6l12 12",
+                                    },
                                 },
                             },
                         },
@@ -222,18 +331,69 @@ pub fn Header() -> Element {
                                     class: "space-y-2 py-6",
                                     a {
                                         class: "block rounded-lg px-3 py-2 font-medium hover:bg-main-200",
-                                        href: "/team",
-                                        "Team"
+                                        href: "https://docs.vauxl.net/",
+                                        target,
+                                        "Documentation"
+                                    },
+                                    div {
+                                        class: "block rounded-lg py-2 font-medium",
+                                        button {
+                                            r#type: "button",
+                                            class: "flex w-full items-center justify-between aria-controls-dis-1 aria-expanded-f rounded-lg py-2 px-3 font-bold hover:bg-main-200",
+                                            onclick: move |_| is_about_menu_open.set(!is_about_menu_open()),
+                                            "About"
+                                            svg {
+                                                class: "size-5 flex-none text-gray-400 aria-hidden data-slot",
+                                                view_box: "0 0 20 20",
+                                                fill: "currentColor",
+                                                path {
+                                                    fill_rule: "evenodd",
+                                                    d:"M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z",
+                                                    clip_rule: "evenodd",
+                                                },
+                                            },
+                                        },
+                                        if is_about_menu_open() {
+                                            div {
+                                                class: "mt-2 space-y-2 pl-3",
+                                                id: "disclosure-1",
+                                                a {
+                                                    class: "block rounded-lg py-2 pl-2 font-bold hover:bg-main-200",
+                                                    href: "/about",
+                                                    "About"
+                                                },
+                                                div {
+                                                    class: "ml-2",
+                                                    a {
+                                                        class: "block rounded-lg py-2 pl-2 font-medium hover:bg-main-200",
+                                                        href: "/about/team",
+                                                        "Team"
+                                                    },
+                                                    a {
+                                                        class: "flex justify-items-start block rounded-lg py-2 pl-2 font-medium hover:bg-main-200 gap-1",
+                                                        href: "https://git.vauxl.net/",
+                                                        target,
+                                                        "Community"
+                                                        link_arrow{},
+                                                    },
+                                                    a {
+                                                        class: "block rounded-lg py-2 pl-2 font-medium hover:bg-main-200",
+                                                        href: "/about/roadmap",
+                                                        "Roadmap"
+                                                    },
+                                                },
+                                            },
+                                        },
                                     },
                                     a {
                                         class: "block rounded-lg px-3 py-2 font-medium hover:bg-main-200",
-                                        href: "/project",
-                                        "Projects"
+                                        href: "/news",
+                                        "News"
                                     },
                                     a {
                                         class: "block rounded-lg px-3 py-2 font-medium hover:bg-main-200",
-                                        href: "/dashboard",
-                                        "Dashboard"
+                                        href: "/pricing",
+                                        "Pricing"
                                     },
                                     div {
                                         class: "block rounded-lg py-2 font-medium",
@@ -265,14 +425,14 @@ pub fn Header() -> Element {
                                                 div {
                                                     class: "ml-2",
                                                     a {
-                                                    class: "block rounded-lg py-2 pr-3 pl-2 font-medium hover:bg-main-200",
-                                                    href: "/contact/report",
-                                                    "Report"
+                                                        class: "block rounded-lg py-2 pr-3 pl-2 font-medium hover:bg-main-200",
+                                                        href: "/contact/report",
+                                                        "Report"
                                                     },
                                                     a {
-                                                    class: "block rounded-lg py-2 pr-3 pl-2 font-medium hover:bg-main-200",
-                                                    href: "/contact/info",
-                                                    "Information"
+                                                        class: "block rounded-lg py-2 pr-3 pl-2 font-medium hover:bg-main-200",
+                                                        href: "/contact/info",
+                                                        "Information"
                                                     },
                                                 },
                                             },
@@ -280,11 +440,20 @@ pub fn Header() -> Element {
                                     },
                                 },
                                 div {
-                                    class: "py-6",
+                                    class: "py-6 font-semibold",
                                     a {
-                                        class: "-mx-3 block rounded-lg px-3 py-2.5 font-medium hover:bg-main-200",
-                                        href: "/login",
-                                        "LogIn"
+                                        class: "flex justify-items-start -mx-3 block rounded-lg px-3 py-2.5 hover:bg-main-200 gap-1",
+                                        href: "https://b2b.vauxl.net",
+                                        target,
+                                        "Business",
+                                        link_arrow{},
+                                    },
+                                    a {
+                                        class: "flex justify-items-start -mx-3 block rounded-lg px-3 py-2.5 hover:bg-main-200 gap-1",
+                                        href: "https://app.vauxl.net",
+                                        target,
+                                        "Webapp",
+                                        link_arrow{},
                                     },
                                 }
                             },
@@ -358,6 +527,31 @@ pub fn ICON() -> Element {
                         },
                     },
                 },
+            },
+        },
+    }
+}
+
+#[component]
+pub fn link_arrow() -> Element {
+    rsx! {
+        svg {
+            class: "size-4 aria-hidden data-slot",
+            view_box: "0 0 48 48",
+            fill: "none",
+            path {
+                d: "M19 11H37V29",
+                stroke: "currentColor",
+                stroke_width: "4",
+                stroke_linecap: "round",
+                stroke_linejoin: "round",
+            },
+            path {
+                d: "M11.5441 36.4559L36.9999 11",
+                stroke: "currentColor",
+                stroke_width: "4",
+                stroke_linecap: "round",
+                stroke_linejoin: "round",
             },
         },
     }

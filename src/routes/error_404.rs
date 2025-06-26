@@ -7,7 +7,7 @@ pub fn Error404(route: Vec<String>) -> Element {
                 class:"flex-grow",
         }
         div{
-            class:"flex-none items-center mx-auto bg-main-400 rounded-lg p-4 text-main-100",
+            class:"flex-none items-center mx-auto bg-main-500 rounded-lg p-4 text-main-100",
             h1 { "Page not found" }
             p { "We are terribly sorry, but the page you requested doesn't exist." }
             pre { 
