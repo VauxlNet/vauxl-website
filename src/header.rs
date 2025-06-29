@@ -167,9 +167,11 @@ pub fn Header() -> Element {
                         }
                     }
                     a {
-                        class: "rounded-lg px-3 py-2 mx-6 hover:bg-main-500 transition duration-300",
-                        href: "/news",
+                        class: "flex justify-items-start rounded-lg px-3 py-2 mx-6 hover:bg-main-500 transition duration-300 gap-1",
+                        href: "https://blog.vauxl.net",
+                        target,
                         "News",
+                        link_arrow{},
                     },
                     a {
                         class: "rounded-lg px-3 py-2 mx-6 hover:bg-main-500 transition duration-300",
@@ -386,9 +388,11 @@ pub fn Header() -> Element {
                                         },
                                     },
                                     a {
-                                        class: "block rounded-lg px-3 py-2 font-medium hover:bg-main-200",
-                                        href: "/news",
-                                        "News"
+                                        class: "flex justify-items-start block rounded-lg px-3 py-2 font-medium hover:bg-main-200 gap-1",
+                                        href: "https://blog.vauxl.net",
+                                        target,
+                                        "News",
+                                        link_arrow{},
                                     },
                                     a {
                                         class: "block rounded-lg px-3 py-2 font-medium hover:bg-main-200",
