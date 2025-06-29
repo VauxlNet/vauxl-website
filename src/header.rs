@@ -168,7 +168,8 @@ pub fn Header() -> Element {
                     }
                     a {
                         class: "rounded-lg px-3 py-2 mx-6 hover:bg-main-500 transition duration-300",
-                        href: "/news",
+                        href: "https://blog.vauxl.net",
+                        target,
                         "News",
                     },
                     a {
@@ -387,7 +388,8 @@ pub fn Header() -> Element {
                                     },
                                     a {
                                         class: "block rounded-lg px-3 py-2 font-medium hover:bg-main-200",
-                                        href: "/news",
+                                        href: "https://blog.vauxl.net",
+                                        target,
                                         "News"
                                     },
                                     a {
