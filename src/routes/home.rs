@@ -53,7 +53,7 @@ pub fn Home() -> Element {
                 }
             }
             div {
-                id: "rollingSections",
+                id: "WhyVauxl",
                 class: "flex flex-col gap-2 container mx-auto p-6 bg-main-100 rounded-lg shadow-xl mb-2 text-main-300",
                 section {
                     h2 {
@@ -164,6 +164,23 @@ pub fn Home() -> Element {
                             }
                         }
                     }
+                }
+            }
+            div {
+                id: "FeaturesAtAGlance",
+                class: "flex flex-col gap-2 container mx-auto p-6 bg-main-100 rounded-lg shadow-xl mb-2 text-main-300",
+                h2 {
+                    class: "text-3xl font-bold my-2",
+                    "Why Vauxl?"
+                }
+                //TODO: beautify the List
+                ul {
+                    class: "list-disc mx-5 text-l",
+                    li {"Text & Voice Chat"}
+                    li {"Channels & Direct Messages"}
+                    li {"Theming & Plugins"}
+                    li {"Friend Lists & User Profiles"}
+                    li {"Embedded & Hosted Servers"}
                 }
             }
         }
